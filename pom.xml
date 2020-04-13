@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Panpan</groupId>
+  <artifactId>BimQuery</artifactId>
+  <version>0.0.3-SNAPSHOT</version>
+  <dependencies>
+  	<dependency>
+  		 <groupId>org.apache.jena</groupId>
+   		 <artifactId>jena-fuseki-main</artifactId>
+    	 <version>3.13.0</version>
+  	</dependency>
+  	<dependency>
+    <groupId>com.github.pipauwel</groupId>
+    <artifactId>IFCtoRDF</artifactId>
+    <version>0.3</version>
+	</dependency>	
+	<dependency>
+ 	<groupId>org.slf4j</groupId>
+  	<artifactId>slf4j-log4j12</artifactId>
+  	<version>1.6.1</version>
+	</dependency>
+	<dependency>
+  	 <groupId>log4j</groupId>
+    <artifactId>log4j</artifactId>
+    <version>1.2.17</version>
+  	</dependency>	
+  </dependencies>
+  <build>
+    <pluginManagement>
+        <plugins>
+            <!-- Default java version was 1.5, to change the default version added this plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </pluginManagement>
+</build>
+</project>
