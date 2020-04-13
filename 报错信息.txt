@@ -1,0 +1,11 @@
+DEBUG [main] (LockMRSW.java:57) - Lock : main
+Error
+java.lang.NoClassDefFoundError: org/apache/jena/sys/JenaSystem
+	at org.apache.jena.fuseki.main.FusekiServer.<clinit>(FusekiServer.java:98)
+	at BimQuery.RunFusekiServerDemo(BimQuery.java:41)
+	at BimQuery.main(BimQuery.java:33)
+Caused by: java.lang.ClassNotFoundException: org.apache.jena.sys.JenaSystem
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:602)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	... 3 more
