@@ -30,8 +30,8 @@ public class BimQuery {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    	RunFusekiServerDemo(RDFFile);
-    	//FusekiServerQueryDemo();
+    	//RunFusekiServerDemo(RDFFile);
+    	FusekiServerQueryDemo();
                   
        }
     
@@ -78,31 +78,24 @@ public class BimQuery {
     
     public static void FusekiServerQueryDemo() {
     	
-    	String outputFile="C:\\Users\\Panpan\\Desktop\\ifc\\wall-java-test.ttl";
+    	//String outputFile="C:\\Users\\Panpan\\Desktop\\ifc\\wall-java-test.ttl";
+    	
+    	//需自己指定URL
     	  RDFConnectionRemoteBuilder builder = RDFConnectionRemote.create()
-                  .destination("http://localhost:3030/demo/")
+                  .destination("http://localhost:3030/Example-CN-1/")
                   //.destination("http://localhost:3030/Example-CN-1/"
                   .queryEndpoint("query")
                   .updateEndpoint("update")
                   .gspEndpoint("data");
               
-              Query query = QueryFactory.create("prefix demo: <http://www.semanticweb.org/demo#> \r\n" + 
-              		"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\r\n" + 
-              		"PREFIX : <http://www.semanticweb.org/panpan/bim-demo#>\r\n" + 
-              		"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\r\n" + 
-              		"PREFIX owl: <http://www.w3.org/2002/07/owl#>\r\n" + 
-              		"PREFIX ifcowl:  <http://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#>\r\n" + 
-              		"PREFIX express:  <https://w3id.org/express#> \r\n" + 
-              		"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\r\n" + 
-              		"		SELECT ?door  WHERE{\r\n" + 
-              		"?door  rdf:type ifcowl:IfcDoor. \r\n" + 
-              		"}  limit 20");
+              Query query_door = QueryFactory.create(Utils.queryWallConnectedSpecifiedItem("door", "A-防火门-单嵌板钢:FM1021 甲:11368452"));
 
-              
+              Query query_window = QueryFactory.create(Utils.queryWallConnectedSpecifiedItem("window", "A-固定窗-分隔:GC3045:3290262")); 
               try ( RDFConnection conn = builder.build()) { 
             	  //conn.load(outputFile);
-            	  conn.loadDataset(outputFile);
-            	  conn.queryResultSet(query, ResultSetFormatter::out);
+            	  //conn.loadDataset(outputFile);
+            	  conn.queryResultSet(query_door, ResultSetFormatter::out);
+            	  conn.queryResultSet(query_window, ResultSetFormatter::out);
               }
     }
     
